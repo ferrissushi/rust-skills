@@ -43,7 +43,4 @@ mod test {
         execute_create_file(path, "Hello world").expect("");
         assert!(fs::exists(path).expect("Cannot check if file is there"));
     }
-
-    #[test]
-
 }
