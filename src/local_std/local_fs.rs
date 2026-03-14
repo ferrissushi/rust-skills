@@ -1,19 +1,18 @@
 use std::{fs, path::Path};
 
-/// create_dir create a single empty directory at the provided Path
-/// it takes a &Path
-/// An error will be returned if
-///     - the user doesn't have the permission to create the directory
-/// at the current &Path.
-///     - A parent of the given &Path doesn't exist.
-///     - The folder exists.
 pub fn execute_create_dir(path: &Path) -> std::io::Result<()> {
     fs::create_dir(path)?;
     Ok(())
 }
 
+
 pub fn execute_delete_dir(path: &Path) -> std::io::Result<()> {
     fs::remove_dir(path)?;
+    Ok(())
+}
+
+pub fn execute_create_file<T: AsRef<Path>, C: AsRef<[u8]>>(path: T, content: C) -> std::io::Result<()> {
+    fs::write(path, content)?;
     Ok(())
 }
 
@@ -22,7 +21,7 @@ pub fn execute_delete_dir(path: &Path) -> std::io::Result<()> {
 mod test {
     use std::{fs, path::Path};
 
-    use crate::local_std::local_fs::{execute_delete_dir, execute_create_dir};
+    use crate::local_std::local_fs::{execute_create_dir, execute_create_file, execute_delete_dir};
 
     #[test]
     fn should_create_single_dir() {
@@ -37,4 +36,14 @@ mod test {
         execute_delete_dir(path).expect("Cannot delete test-output-folder");
         assert!(!fs::exists(path).expect("Cannot check if folder is still there"));
     }
+
+    #[test]
+    fn should_create_test_file() {
+        let path = Path::new("./test.txt");
+        execute_create_file(path, "Hello world").expect("");
+        assert!(fs::exists(path).expect("Cannot check if file is there"));
+    }
+
+    #[test]
+
 }
