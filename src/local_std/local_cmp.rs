@@ -1,4 +1,4 @@
-use std::cmp::{self, Ordering};
+use std::cmp::{self, Ordering, Reverse};
 
 pub fn launch_cmp_module_test() -> std::io::Result<()> {
     let a = cmp::max(12, 23);
