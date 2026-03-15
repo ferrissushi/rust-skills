@@ -1,11 +1,10 @@
-use std::{fs, os::unix::fs::PermissionsExt};
+use crate::local_std::local_cmp::launch_cmp_module_test;
 
 mod local_std;
 
 fn main() -> std::io::Result<()> {
-    let data = fs::metadata("./src/local_std/local_fs.rs")?;
-    let permissions = data.permissions();
-    let permissions_bits: u32 = permissions.mode();
-    println!("{permissions_bits}");
+    launch_cmp_module_test()?;
+
     Ok(())
+
 }
