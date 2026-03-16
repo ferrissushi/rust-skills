@@ -1,10 +1,11 @@
-use crate::local_std::local_cmp::launch_cmp_module_test;
+use crate::local_std::{local_cmp::launch_cmp_module_test, local_default::default_module_main};
 
 mod local_std;
 
 fn main() -> std::io::Result<()> {
     launch_cmp_module_test()?;
 
+    default_module_main()?;
     Ok(())
 
 }

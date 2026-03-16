@@ -1,4 +1,4 @@
-use std::cmp::{self, Ordering, Reverse};
+use std::cmp::{self, Ordering};
 
 pub fn launch_cmp_module_test() -> std::io::Result<()> {
     let a = cmp::max(12, 23);
@@ -38,10 +38,6 @@ impl Eq for Book {}
 impl PartialEq for Book {
     fn eq(&self, other: &Self) -> bool {
         self.isbn == other.isbn
-    }
-
-    fn ne(&self, other: &Self) -> bool {
-        self.isbn != other.isbn
     }
 }
 
