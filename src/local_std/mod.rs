@@ -3,3 +3,4 @@ pub mod local_cmp;
 pub mod local_default;
 pub mod local_path;
 pub mod local_iterator;
+pub mod local_collections;
