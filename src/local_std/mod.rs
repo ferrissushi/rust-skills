@@ -6,3 +6,4 @@ pub mod local_iterator;
 pub mod local_collections;
 pub mod local_env;
 pub mod local_clone;
+pub mod local_box;
